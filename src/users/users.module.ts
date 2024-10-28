@@ -8,11 +8,12 @@ import { UserRoles } from '../roles/user-roles.model';
 import { RolesModule } from '../roles/roles.module';
 import { AuthModule } from '../auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
+import { Post } from '../posts/posts.model';
 
 @Module({
     controllers: [UsersController],
     providers: [UsersService],
-    imports: [SequelizeModule.forFeature([User, Role, UserRoles]), RolesModule, forwardRef(() => AuthModule)],
+    imports: [SequelizeModule.forFeature([User, Role, UserRoles]), RolesModule, forwardRef(() => AuthModule), Post],
     exports: [UsersService],
 })
 export class UsersModule {}
